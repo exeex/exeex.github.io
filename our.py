@@ -1,8 +1,11 @@
 import os
 import pathlib
 
-data_folder = pathlib.Path('data_our')
+data_folder = pathlib.Path('/home/dccv/Desktop/Code/output_storage/50[epoch200][4.963196432030028]')
 output_folder = pathlib.Path('output2')
+k = os.path.exists(output_folder)
+if not k:
+    os.mkdir(output_folder)
 files = os.listdir(data_folder)
 
 song_name_idx_dict = {1: 'Sambasevam Shanmugam - Kaathaadi', 2: 'Lyndsey Ollard - Catching Up',
@@ -51,11 +54,18 @@ def transfer_wav(input_file, output_file, cover_image):
 
 for file in files:
     if file.split('[')[0] == 'vocal':
-        song_name = file.replace('vocal[2]', '').replace('_vocal_pred.wav', '')
+        #
+        song_name = file.split("]")[1].replace('_vocal_pred.wav', '')
+        # song_name = file.replace('vocal[2]', '').replace('_vocal_pred.wav', '')
         sid = inv_map[song_name]
         print(sid)
 
-        if sid == 19:
-            input_file = data_folder / file
-            output_file = output_folder / f'our-{sid}.mp4'
-            transfer_wav(input_file, output_file, 'a.jpg')
+        # write vocal_wav to id_mp4
+        input_file = data_folder / file
+        output_file = output_folder / f'our-{sid}.mp4'
+        transfer_wav(input_file, output_file, 'a.jpg')
+
+        # if sid == 19:
+        #     input_file = data_folder / file
+        #     output_file = output_folder / f'our-{sid}.mp4'
+        #     transfer_wav(input_file, output_file, 'a.jpg')

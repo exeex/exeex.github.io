@@ -3,7 +3,8 @@ from pathlib import Path
 import os
 import subprocess
 
-data_folder = Path('data')
+# data_folder = Path('data')
+data_folder = Path('/home/dccv/Desktop/Code/exeex.github.io/output_sdr5')
 # print(os.listdir(data_folder))
 
 song_folders = os.listdir(data_folder)
@@ -17,6 +18,7 @@ song_folders = {get_idx(song_folder): data_folder / song_folder for song_folder 
 
 # 篩選要做的歌
 selected_idx = [x + 1 for x in range(50)]
+print(".")
 
 
 def transfer_m4a(input_file, output_file, cover_image):

@@ -1,10 +1,10 @@
 from pytube import Playlist, YouTube
 from bs4 import BeautifulSoup
 
-pl = Playlist("https://www.youtube.com/playlist?list=PLRBp0Fe2GpgmsW46rJyudVFlY6IYjFBIK")
+# pl = Playlist("https://www.youtube.com/playlist?list=PLRBp0Fe2GpgmsW46rJyudVFlY6IYjFBIK")
+pl = Playlist("https://www.youtube.com/playlist?list=PL4uGfvjHzbw19ACxODupvIi4nMUGkZBKf")
 base_url = 'https://www.youtube.com'
 links = pl.parse_links()
-
 
 # 注意!!!
 # 當前版本pytube抓title功能有問題
@@ -13,10 +13,12 @@ links = pl.parse_links()
 # 修改下面這個檔案：
 # python3.7/site-packages/pytube/__main__.py
 
-
-for link in links[:10]:
+hash_text_dict = []
+for link in links:
     _link = base_url + link
     y = YouTube(_link)
-    print(base_url+link, y.title)
-
-
+    text = link.split("=")[1]
+    dict_ = {'file_name': y.title, 'text': text}
+    hash_text_dict.append(dict_)
+    print(y.title, ",", text)
+    # print(base_url + link, y.title, text)
