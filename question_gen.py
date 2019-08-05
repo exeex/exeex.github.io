@@ -7,36 +7,39 @@ import csv
 class Question:
     def __init__(self, question_type, gt_mix, gt_vocal, our, ag):
         table = []
-        with open('/home/dccv/Desktop/Code/exeex.github.io/table.csv', mode='r', newline="") as csvfile:
+        with open(r'C:\Users\cswu\PycharmProjects\m\exeex.github.io\table.csv', mode='r', newline="") as csvfile:
             rows = csv.reader(csvfile)
             for r in rows:
                 table += [r]
         self.table = table
         # Interference
-        q1_str = """以下三個音檔分別為：參考歌曲，人聲A，人聲B
-請依據參考歌曲，辨識A與B何者殘餘之非人聲伴奏較少
-The audio below are : reference song, vocal sample A, vocal sample B.
-Please select the sample (A or B) which had less residual of accompaniments(non-vocal sounds) according to the reference
-
-1. 參考音檔 reference song  mix_gt: %s
-2. 人聲樣本 vocal sample A  : %s
-3. 人聲樣本 vocal sample B  : %s
-
-請問，聽完參考歌曲後，比較人聲A與B，何者殘餘之非人聲伴奏較少? 
-Which sample (A or B) had less residual of accompaniments(non-vocal sounds) according to the reference track ?"""
+        #         q1_str = """以下三個音檔分別為：參考歌曲，人聲A，人聲B
+        # 請依據參考歌曲，辨識A與B何者殘餘之非人聲伴奏較少
+        # The audio below are : reference song, vocal sample A, vocal sample B.
+        # Please select the sample (A or B) which had less residual of accompaniments(non-vocal sounds) according to the reference
+        #
+        # 1. 參考音檔 reference song  mix_gt: %s
+        # 2. 人聲樣本 vocal sample A  : %s
+        # 3. 人聲樣本 vocal sample B  : %s
+        #
+        # 請問，聽完參考歌曲後，比較人聲A與B，何者殘餘之非人聲伴奏較少?
+        # Which sample (A or B) had less residual of accompaniments(non-vocal sounds) according to the reference track ?"""
+        q1_str = '{"type":"interference","ref": "%s", "A": "%s", "B": "%s"}'
 
         # Audio quality
-        q2_str = """以下三個音檔分別為：參考人聲，人聲A，人聲B
-請依據參考人聲，辨識A與B何者與參考音檔的音質較相近
-The audio below are : reference vocal, vocal sample A, vocal sample B.
-Please select the sample (A or B) which was closer to the reference in terms of audio quality
+        #         q2_str = """以下三個音檔分別為：參考人聲，人聲A，人聲B
+        # 請依據參考人聲，辨識A與B何者與參考音檔的音質較相近
+        # The audio below are : reference vocal, vocal sample A, vocal sample B.
+        # Please select the sample (A or B) which was closer to the reference in terms of audio quality
+        #
+        # 1. 參考人聲 reference vocal  vocal_gt: %s
+        # 2. 人聲樣本 vocal sample A  : %s
+        # 3. 人聲樣本 vocal sample B  : %s
+        #
+        # 請問，聽完參考人聲後，比較人聲A與B，何者與參考人聲的音質較相近?
+        # Which sample (A or B) was closer to the reference in terms of audio quality ?"""
 
-1. 參考人聲 reference vocal  vocal_gt: %s
-2. 人聲樣本 vocal sample A  : %s
-3. 人聲樣本 vocal sample B  : %s
-
-請問，聽完參考人聲後，比較人聲A與B，何者與參考人聲的音質較相近?
-Which sample (A or B) was closer to the reference in terms of audio quality ?"""
+        q2_str = '{"type":"audio_quality","ref": "%s", "A": "%s", "B": "%s"}'
         self.question_type = question_type
         if question_type == 0:
             self.question = q1_str
@@ -126,7 +129,7 @@ def print_questions(ag_vocal_file_names, seed, type_add=0, flip=False):
     oppo_name = ag_vocal_file_names[0].split("-")[0]
     id_add = type_add
 
-    print(" . . . (", oppo_name, ", id +", id_add, ", flip :", str(flip), ")")
+    # print(" . . . (", oppo_name, ", id +", id_add, ", flip :", str(flip), ")")
     file_name_map = {}
     q_list = []
     for idx in range(song_number):
@@ -158,30 +161,31 @@ def print_questions(ag_vocal_file_names, seed, type_add=0, flip=False):
         sid = q.ag.split("-")[1].split(".mp4")[0]
         m_v = q.question.split(":")[0].split(" ")[-1]
         oppo = q.ag.split("-")[0]
-        print(f'\n======Question {i + 1}======      kinds=', sid, m_v, oppo)
-        print(i + 1, ".")
+        # print(f'\n======Question {i + 1}======      kinds=', sid, m_v, oppo)
+        # print(f'\n======Question {i + 1}======')
+        # print(i + 1, ":")
         _q = q.get_question()
-        print(q.get_question())
+        print(i + 1, ":", q.get_question(), ',')
 
         # print('\n')
         # print(f'\n------Answer {i + 1}------')
-        if i < len(q_list) // 2:
-            if flip:
-                print(q.get_answer_vocal())
-            else:
-                print(q.get_answer_mix())
-        else:
-            if flip:
-                print(q.get_answer_mix())
-            else:
-                print(q.get_answer_vocal())
+        # if i < len(q_list) // 2:
+        #     if flip:
+        #         print(q.get_answer_vocal())
+        #     else:
+        #         print(q.get_answer_mix())
+        # else:
+        #     if flip:
+        #         print(q.get_answer_mix())
+        #     else:
+        #         print(q.get_answer_vocal())
 
         file_name_map[q.gt_mix] = hash_file_name(q.gt_mix)
         file_name_map[q.gt_vocal] = hash_file_name(q.gt_vocal)
         file_name_map[q.our] = hash_file_name(q.our)
         file_name_map[q.ag] = hash_file_name(q.ag)
 
-        print("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -")
+        # print("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -")
 
     return file_name_map
 
@@ -189,34 +193,32 @@ def print_questions(ag_vocal_file_names, seed, type_add=0, flip=False):
 if __name__ == '__main__':
     from pathlib import Path
     from shutil import copyfile
-
-    print('\n\n                                                   ###########問卷A###########', end=" . . .")
-
+    print('[')
+    print('{ "name" : "A", "questions": {')
     file_name_map_a = print_questions(jy3_vocal_file_names, 0, type_add=0)
-
-    print('\n\n                                                   ###########問卷B###########', end=" . . .")
+    print('}},')
+    print('{ "name" : "B", "questions": {')
     file_name_map_b = print_questions(jy3_vocal_file_names, 0, type_add=0, flip=True)
-
-    print('\n\n                                                   ###########問卷C###########', end=" . . .")
-
+    print('}},')
+    print('{ "name" : "C", "questions": {')
     file_name_map_c = print_questions(jy3_vocal_file_names, 0, type_add=2)
-
-    print('\n\n                                                   ###########問卷D###########', end=" . . .")
+    print('}},')
+    print('{ "name" : "D", "questions": {')
     file_name_map_d = print_questions(jy3_vocal_file_names, 0, type_add=2, flip=True)
-
-    print('\n\n                                                   ###########問卷E###########', end=" . . .")
-
+    print('}},')
+    print('{ "name" : "E", "questions": {')
     file_name_map_e = print_questions(tak_vocal_file_names, 0, type_add=0)
-
-    print('\n\n                                                   ###########問卷F###########', end=" . . .")
+    print('}},')
+    print('{ "name" : "F", "questions": {')
     file_name_map_f = print_questions(tak_vocal_file_names, 0, type_add=0, flip=True)
-
-    print('\n\n                                                   ###########問卷G###########', end=" . . .")
-
+    print('}},')
+    print('{ "name" : "G", "questions": {')
     file_name_map_g = print_questions(tak_vocal_file_names, 0, type_add=2)
-
-    print('\n\n                                                   ###########問卷H###########', end=" . . .")
+    print('}},')
+    print('{ "name" : "H", "questions": {')
     file_name_map_h = print_questions(tak_vocal_file_names, 0, type_add=2, flip=True)
+    print('}},')
+    print(']')
 
     #
     #
@@ -251,4 +253,4 @@ if __name__ == '__main__':
     print('\n ###########對照表###########')
     for source, target in total_name_map.items():
         print(source, ',', target)
-        copyfile(in_folder / source, out_folder / target)
+        # copyfile(in_folder / source, out_folder / target)

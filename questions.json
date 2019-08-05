@@ -1,0 +1,98 @@
+[
+{ "name" : "A", "questions": {
+"1" : {"type":"interference","ref": "gt_mix-1.mp4", "A": "our-1.mp4", "B": "jy3-1.mp4"} ,
+"2" : {"type":"interference","ref": "gt_mix-5.mp4", "A": "jy3-5.mp4", "B": "our-5.mp4"} ,
+"3" : {"type":"interference","ref": "gt_mix-9.mp4", "A": "our-9.mp4", "B": "jy3-9.mp4"} ,
+"4" : {"type":"interference","ref": "gt_mix-13.mp4", "A": "jy3-13.mp4", "B": "our-13.mp4"} ,
+"5" : {"type":"interference","ref": "gt_mix-17.mp4", "A": "jy3-17.mp4", "B": "our-17.mp4"} ,
+"6" : {"type":"audio_quality","ref": "gt_vocal-21.mp4", "A": "jy3-21.mp4", "B": "our-21.mp4"} ,
+"7" : {"type":"audio_quality","ref": "gt_vocal-25.mp4", "A": "our-25.mp4", "B": "jy3-25.mp4"} ,
+"8" : {"type":"audio_quality","ref": "gt_vocal-29.mp4", "A": "jy3-29.mp4", "B": "our-29.mp4"} ,
+"9" : {"type":"audio_quality","ref": "gt_vocal-33.mp4", "A": "jy3-33.mp4", "B": "our-33.mp4"} ,
+"10" : {"type":"audio_quality","ref": "gt_vocal-37.mp4", "A": "jy3-37.mp4", "B": "our-37.mp4"}
+}},
+{ "name" : "B", "questions": {
+"1": {"type":"audio_quality","ref": "gt_vocal-1.mp4", "A": "our-1.mp4", "B": "jy3-1.mp4"} ,
+"2": {"type":"audio_quality","ref": "gt_vocal-5.mp4", "A": "jy3-5.mp4", "B": "our-5.mp4"} ,
+"3": {"type":"audio_quality","ref": "gt_vocal-9.mp4", "A": "our-9.mp4", "B": "jy3-9.mp4"} ,
+"4": {"type":"audio_quality","ref": "gt_vocal-13.mp4", "A": "jy3-13.mp4", "B": "our-13.mp4"} ,
+"5": {"type":"audio_quality","ref": "gt_vocal-17.mp4", "A": "jy3-17.mp4", "B": "our-17.mp4"} ,
+"6": {"type":"interference","ref": "gt_mix-21.mp4", "A": "jy3-21.mp4", "B": "our-21.mp4"} ,
+"7": {"type":"interference","ref": "gt_mix-25.mp4", "A": "our-25.mp4", "B": "jy3-25.mp4"} ,
+"8": {"type":"interference","ref": "gt_mix-29.mp4", "A": "jy3-29.mp4", "B": "our-29.mp4"} ,
+"9": {"type":"interference","ref": "gt_mix-33.mp4", "A": "jy3-33.mp4", "B": "our-33.mp4"} ,
+"10" : {"type":"interference","ref": "gt_mix-37.mp4", "A": "jy3-37.mp4", "B": "our-37.mp4"}
+}},
+{ "name" : "C", "questions": {
+"1" : {"type":"interference","ref": "gt_mix-3.mp4", "A": "our-3.mp4", "B": "jy3-3.mp4"} ,
+"2" : {"type":"interference","ref": "gt_mix-7.mp4", "A": "jy3-7.mp4", "B": "our-7.mp4"} ,
+"3" : {"type":"interference","ref": "gt_mix-11.mp4", "A": "our-11.mp4", "B": "jy3-11.mp4"} ,
+"4" : {"type":"interference","ref": "gt_mix-15.mp4", "A": "jy3-15.mp4", "B": "our-15.mp4"} ,
+"5" : {"type":"interference","ref": "gt_mix-19.mp4", "A": "jy3-19.mp4", "B": "our-19.mp4"} ,
+"6" : {"type":"audio_quality","ref": "gt_vocal-23.mp4", "A": "jy3-23.mp4", "B": "our-23.mp4"} ,
+"7" : {"type":"audio_quality","ref": "gt_vocal-27.mp4", "A": "our-27.mp4", "B": "jy3-27.mp4"} ,
+"8" : {"type":"audio_quality","ref": "gt_vocal-31.mp4", "A": "jy3-31.mp4", "B": "our-31.mp4"} ,
+"9" : {"type":"audio_quality","ref": "gt_vocal-35.mp4", "A": "jy3-35.mp4", "B": "our-35.mp4"} ,
+"10" : {"type":"audio_quality","ref": "gt_vocal-39.mp4", "A": "jy3-39.mp4", "B": "our-39.mp4"}
+}},
+{ "name" : "D", "questions": {
+"1" : {"type":"audio_quality","ref": "gt_vocal-3.mp4", "A": "our-3.mp4", "B": "jy3-3.mp4"} ,
+"2" : {"type":"audio_quality","ref": "gt_vocal-7.mp4", "A": "jy3-7.mp4", "B": "our-7.mp4"} ,
+"3" : {"type":"audio_quality","ref": "gt_vocal-11.mp4", "A": "our-11.mp4", "B": "jy3-11.mp4"} ,
+"4" : {"type":"audio_quality","ref": "gt_vocal-15.mp4", "A": "jy3-15.mp4", "B": "our-15.mp4"} ,
+"5" : {"type":"audio_quality","ref": "gt_vocal-19.mp4", "A": "jy3-19.mp4", "B": "our-19.mp4"} ,
+"6" : {"type":"interference","ref": "gt_mix-23.mp4", "A": "jy3-23.mp4", "B": "our-23.mp4"} ,
+"7" : {"type":"interference","ref": "gt_mix-27.mp4", "A": "our-27.mp4", "B": "jy3-27.mp4"} ,
+"8" : {"type":"interference","ref": "gt_mix-31.mp4", "A": "jy3-31.mp4", "B": "our-31.mp4"} ,
+"9" : {"type":"interference","ref": "gt_mix-35.mp4", "A": "jy3-35.mp4", "B": "our-35.mp4"} ,
+"10": {"type":"interference","ref": "gt_mix-39.mp4", "A": "jy3-39.mp4", "B": "our-39.mp4"}
+}},
+{ "name" : "E", "questions": {
+"1" : {"type":"interference","ref": "gt_mix-1.mp4", "A": "our-1.mp4", "B": "tak-1.mp4"} ,
+"2" : {"type":"interference","ref": "gt_mix-5.mp4", "A": "tak-5.mp4", "B": "our-5.mp4"} ,
+"3" : {"type":"interference","ref": "gt_mix-9.mp4", "A": "our-9.mp4", "B": "tak-9.mp4"} ,
+"4" : {"type":"interference","ref": "gt_mix-13.mp4", "A": "tak-13.mp4", "B": "our-13.mp4"} ,
+"5" : {"type":"interference","ref": "gt_mix-17.mp4", "A": "tak-17.mp4", "B": "our-17.mp4"} ,
+"6" : {"type":"audio_quality","ref": "gt_vocal-21.mp4", "A": "tak-21.mp4", "B": "our-21.mp4"} ,
+"7" : {"type":"audio_quality","ref": "gt_vocal-25.mp4", "A": "our-25.mp4", "B": "tak-25.mp4"} ,
+"8" : {"type":"audio_quality","ref": "gt_vocal-29.mp4", "A": "tak-29.mp4", "B": "our-29.mp4"} ,
+"9" : {"type":"audio_quality","ref": "gt_vocal-33.mp4", "A": "tak-33.mp4", "B": "our-33.mp4"} ,
+"10" : {"type":"audio_quality","ref": "gt_vocal-37.mp4", "A": "tak-37.mp4", "B": "our-37.mp4"}
+}},
+{ "name" : "F", "questions": {
+"1" : {"type":"audio_quality","ref": "gt_vocal-1.mp4", "A": "our-1.mp4", "B": "tak-1.mp4"} ,
+"2" : {"type":"audio_quality","ref": "gt_vocal-5.mp4", "A": "tak-5.mp4", "B": "our-5.mp4"} ,
+"3" : {"type":"audio_quality","ref": "gt_vocal-9.mp4", "A": "our-9.mp4", "B": "tak-9.mp4"} ,
+"4" : {"type":"audio_quality","ref": "gt_vocal-13.mp4", "A": "tak-13.mp4", "B": "our-13.mp4"} ,
+"5" : {"type":"audio_quality","ref": "gt_vocal-17.mp4", "A": "tak-17.mp4", "B": "our-17.mp4"} ,
+"6" : {"type":"interference","ref": "gt_mix-21.mp4", "A": "tak-21.mp4", "B": "our-21.mp4"} ,
+"7" : {"type":"interference","ref": "gt_mix-25.mp4", "A": "our-25.mp4", "B": "tak-25.mp4"} ,
+"8" : {"type":"interference","ref": "gt_mix-29.mp4", "A": "tak-29.mp4", "B": "our-29.mp4"} ,
+"9" : {"type":"interference","ref": "gt_mix-33.mp4", "A": "tak-33.mp4", "B": "our-33.mp4"} ,
+"10" : {"type":"interference","ref": "gt_mix-37.mp4", "A": "tak-37.mp4", "B": "our-37.mp4"}
+}},
+{ "name" : "G", "questions": {
+"1" : {"type":"interference","ref": "gt_mix-3.mp4", "A": "our-3.mp4", "B": "tak-3.mp4"} ,
+"2" : {"type":"interference","ref": "gt_mix-7.mp4", "A": "tak-7.mp4", "B": "our-7.mp4"} ,
+"3" : {"type":"interference","ref": "gt_mix-11.mp4", "A": "our-11.mp4", "B": "tak-11.mp4"} ,
+"4" : {"type":"interference","ref": "gt_mix-15.mp4", "A": "tak-15.mp4", "B": "our-15.mp4"} ,
+"5" : {"type":"interference","ref": "gt_mix-19.mp4", "A": "tak-19.mp4", "B": "our-19.mp4"} ,
+"6" : {"type":"audio_quality","ref": "gt_vocal-23.mp4", "A": "tak-23.mp4", "B": "our-23.mp4"} ,
+"7" : {"type":"audio_quality","ref": "gt_vocal-27.mp4", "A": "our-27.mp4", "B": "tak-27.mp4"} ,
+"8" : {"type":"audio_quality","ref": "gt_vocal-31.mp4", "A": "tak-31.mp4", "B": "our-31.mp4"} ,
+"9" : {"type":"audio_quality","ref": "gt_vocal-35.mp4", "A": "tak-35.mp4", "B": "our-35.mp4"} ,
+"10" : {"type":"audio_quality","ref": "gt_vocal-39.mp4", "A": "tak-39.mp4", "B": "our-39.mp4"}
+}},
+{ "name" : "H", "questions": {
+"1": {"type":"audio_quality","ref": "gt_vocal-3.mp4", "A": "our-3.mp4", "B": "tak-3.mp4"} ,
+"2": {"type":"audio_quality","ref": "gt_vocal-7.mp4", "A": "tak-7.mp4", "B": "our-7.mp4"} ,
+"3": {"type":"audio_quality","ref": "gt_vocal-11.mp4", "A": "our-11.mp4", "B": "tak-11.mp4"} ,
+"4": {"type":"audio_quality","ref": "gt_vocal-15.mp4", "A": "tak-15.mp4", "B": "our-15.mp4"} ,
+"5": {"type":"audio_quality","ref": "gt_vocal-19.mp4", "A": "tak-19.mp4", "B": "our-19.mp4"} ,
+"6": {"type":"interference","ref": "gt_mix-23.mp4", "A": "tak-23.mp4", "B": "our-23.mp4"} ,
+"7": {"type":"interference","ref": "gt_mix-27.mp4", "A": "our-27.mp4", "B": "tak-27.mp4"} ,
+"8": {"type":"interference","ref": "gt_mix-31.mp4", "A": "tak-31.mp4", "B": "our-31.mp4"} ,
+"9": {"type":"interference","ref": "gt_mix-35.mp4", "A": "tak-35.mp4", "B": "our-35.mp4"} ,
+"10": {"type":"interference","ref": "gt_mix-39.mp4", "A": "tak-39.mp4", "B": "our-39.mp4"}
+}}
+]
