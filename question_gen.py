@@ -1,23 +1,42 @@
 import hashlib
 import os
 import random
+import csv
 
 
 class Question:
     def __init__(self, question_type, gt_mix, gt_vocal, our, ag):
+        table = []
+        with open('/home/dccv/Desktop/Code/exeex.github.io/table.csv', mode='r', newline="") as csvfile:
+            rows = csv.reader(csvfile)
+            for r in rows:
+                table += [r]
+        self.table = table
         # Interference
-        q1_str = """1. 參考音檔 mix_gt: %s
-2. 人聲樣本A: %s
-3. 人聲樣本B: %s
-請問，哪一人聲樣本殘留之非人聲伴奏(eg. 樂器聲、雜音、…etc )聲音較少?
- Which sample had less residual from the backing track present with the vocal track ?"""
+        q1_str = """以下三個音檔分別為：參考歌曲，人聲A，人聲B
+請依據參考歌曲，辨識A與B何者殘餘之非人聲伴奏較少
+The audio below are : reference song, vocal sample A, vocal sample B.
+Please select the sample (A or B) which had less residual of accompaniments(non-vocal sounds) according to the reference
+
+1. 參考音檔 reference song  mix_gt: %s
+2. 人聲樣本 vocal sample A  : %s
+3. 人聲樣本 vocal sample B  : %s
+
+請問，聽完參考歌曲後，比較人聲A與B，何者殘餘之非人聲伴奏較少? 
+Which sample (A or B) had less residual of accompaniments(non-vocal sounds) according to the reference track ?"""
 
         # Audio quality
-        q2_str = """1. 參考音檔 vocal_gt: %s
-2. 人聲樣本A: %s
-3. 人聲樣本B: %s
-請問，哪一人聲樣本與參考音檔的音質較相近?
-Which was closer to the reference in terms of audio quality ?"""
+        q2_str = """以下三個音檔分別為：參考人聲，人聲A，人聲B
+請依據參考人聲，辨識A與B何者與參考音檔的音質較相近
+The audio below are : reference vocal, vocal sample A, vocal sample B.
+Please select the sample (A or B) which was closer to the reference in terms of audio quality
+
+1. 參考人聲 reference vocal  vocal_gt: %s
+2. 人聲樣本 vocal sample A  : %s
+3. 人聲樣本 vocal sample B  : %s
+
+請問，聽完參考人聲後，比較人聲A與B，何者與參考人聲的音質較相近?
+Which sample (A or B) was closer to the reference in terms of audio quality ?"""
         self.question_type = question_type
         if question_type == 0:
             self.question = q1_str
@@ -25,9 +44,9 @@ Which was closer to the reference in terms of audio quality ?"""
             self.question = q2_str
 
         self.answer = """
-ref : %s , %s
-our : %s , %s
-ag  : %s , %s
+ref : %s , %s , %s
+our : %s , %s , %s
+ag  : %s , %s , %s
 A    B   無法分辨 (Unable to distinguish)
 """
 
@@ -40,14 +59,31 @@ A    B   無法分辨 (Unable to distinguish)
     def __repr__(self):
         return self.qstr
 
+    def get_ut(self):
+        gt_mix_ut, ag_ut, our_ut = 0, 0, 0
+        for t in self.table:
+            if t[0] == self.gt_mix:
+                gt_mix_ut = t[2]
+            if t[0] == self.gt_vocal:
+                gt_vocal_ut = t[2]
+            if t[0] == self.ag:
+                ag_ut = t[2]
+            if t[0] == self.our:
+                our_ut = t[2]
+        return gt_mix_ut, gt_vocal_ut, ag_ut, our_ut
+
     def get_answer_mix(self):
+        gt_mix_ut, gt_vocal_ut, ag_ut, our_ut = self.get_ut()
         return self.answer % (
-            self.gt_mix, hash_file_name(self.gt_mix), self.our, hash_file_name(self.our), self.ag,
-            hash_file_name(self.ag))
+            self.gt_mix, hash_file_name(self.gt_mix), gt_mix_ut,
+            self.our, hash_file_name(self.our), our_ut,
+            self.ag, hash_file_name(self.ag), ag_ut)
 
     def get_answer_vocal(self):
-        return self.answer % (self.gt_vocal, hash_file_name(self.gt_vocal), self.our, hash_file_name(self.our), self.ag,
-                              hash_file_name(self.ag))
+        gt_mix_ut, gt_vocal_ut, ag_ut, our_ut = self.get_ut()
+        return self.answer % (self.gt_vocal, hash_file_name(self.gt_vocal), gt_vocal_ut,
+                              self.our, hash_file_name(self.our), our_ut,
+                              self.ag, hash_file_name(self.ag), ag_ut)
 
     def get_question(self):
         if self.question_type == 0:
@@ -90,7 +126,7 @@ def print_questions(ag_vocal_file_names, seed, type_add=0, flip=False):
     oppo_name = ag_vocal_file_names[0].split("-")[0]
     id_add = type_add
 
-    print(" . . . (", oppo_name, ", id +", id_add, ", flip :", str(flip),")")
+    print(" . . . (", oppo_name, ", id +", id_add, ", flip :", str(flip), ")")
     file_name_map = {}
     q_list = []
     for idx in range(song_number):
@@ -123,6 +159,8 @@ def print_questions(ag_vocal_file_names, seed, type_add=0, flip=False):
         m_v = q.question.split(":")[0].split(" ")[-1]
         oppo = q.ag.split("-")[0]
         print(f'\n======Question {i + 1}======      kinds=', sid, m_v, oppo)
+        print(i + 1, ".")
+        _q = q.get_question()
         print(q.get_question())
 
         # print('\n')
