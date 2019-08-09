@@ -67,10 +67,10 @@ for sid in range(18, 19):
     axes[2].set_xticks(frames_to_time)
     axes[2].set_xticklabels(times)
 
-    # fig.subplots_adjust(right=10)
-    # fig.colorbar(im)
-    # plt.tight_layout(w_pad=3.0)
-    # plt.show()
+
+    # cbar = fig.colorbar(im)
+    # cbar.ax.set_ylabel('Magnitude (dB)', rotation=270)
+
     plt.savefig('spec.png')
 
     # break
