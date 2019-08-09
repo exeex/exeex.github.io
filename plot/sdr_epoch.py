@@ -6,6 +6,7 @@ from pathlib import Path
 data_folder = Path('data')
 files = os.listdir(data_folder)
 
+plt.figure(dpi=300)
 for file in files:
     csv_file = data_folder / file
 

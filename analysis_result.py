@@ -46,6 +46,13 @@ for questionnaire in questionnaires:
 
             for line in r:
                 q_user_answers = line[6:16]
+                musical_training = line[2]
+                sound_device = line[4]
+
+                # if 'Yes' in musical_training:
+                #     continue
+                if '耳機' in sound_device:
+                    continue
 
                 user_choices = []
                 for idx in range(10):
@@ -74,6 +81,14 @@ def count_nb(jy3_ag_int_answers):
     return Counter(a)
 
 
+def print_counter(a: dict, *keys):
+    print("|{:>8s}|{:>8s}|{:>8s}|".format(*keys))
+    print("|{:>8s}|{:>8s}|{:>8s}|".format('-'*8,'-'*8,'-'*8))
+    _total = sum(a.values())
+    print("|{:8d}|{:8d}|{:8d}|".format(a[keys[0]], a[keys[1]], a[keys[2]]))
+    print("|{:8.2%}|{:8.2%}|{:8.2%}|".format(a[keys[0]] / _total, a[keys[1]] / _total, a[keys[2]] / _total))
+
+
 # against jy3
 
 jy3_ag_answers = all_answers['A'] + all_answers['B'] + all_answers['C'] + all_answers['D']
@@ -82,8 +97,13 @@ jy3_ag_int_answers = _jy3_ag_answers[:5]
 jy3_ag_qua_answers = _jy3_ag_answers[5:]
 
 print("# against jy3")
-print(count_nb(jy3_ag_int_answers))
-print(count_nb(jy3_ag_qua_answers))
+
+print('## interference')
+a = count_nb(jy3_ag_int_answers)
+print_counter(a, 'our', '===', 'jy3')
+print('## vocal_similarity')
+a = count_nb(jy3_ag_qua_answers)
+print_counter(a, 'our', '===', 'jy3')
 
 # against tak1
 
@@ -93,5 +113,9 @@ tak1_ag_int_answers = _tak1_ag_answers[:5]
 tak1_ag_qua_answers = _tak1_ag_answers[5:]
 
 print("# against tak1")
-print(count_nb(tak1_ag_int_answers))
-print(count_nb(tak1_ag_qua_answers))
+print('## interference')
+a = count_nb(tak1_ag_int_answers)
+print_counter(a, 'our', '===', 'tak')
+print('## vocal_similarity')
+a = count_nb(tak1_ag_qua_answers)
+print_counter(a, 'our', '===', 'tak')
