@@ -18,6 +18,12 @@ times = [0.5, 1, 1.5]
 frames_to_time = librosa.core.time_to_frames(times, sr=44100, hop_length=512, n_fft=None)
 print(frames_to_time)
 
+fft_frequencies = librosa.core.fft_frequencies(sr=44100, n_fft=2048)
+hz_per_bin = fft_frequencies[3]-fft_frequencies[2]
+hzs = [2000 * i for i in range(10)]
+khzs = [hz//1000 for hz in hzs]
+f_idxs = [int(round(hz/hz_per_bin, 0)) for hz in hzs]
+
 for sid in range(18, 19):
     vocal_gt, _ = librosa.load(str(data_foler / f"gt_vocal-{sid}.mp4"), sr=44100)
     mix_gt, _ = librosa.load(str(data_foler / f"gt_mix-{sid}.mp4"), sr=44100)
@@ -33,8 +39,10 @@ for sid in range(18, 19):
     fig, axes = plt.subplots(nrows=1, ncols=3, dpi=300)
 
     title_str = "vocal"
-    axes[0].set_ylabel("Frequency (Hz)")
+    axes[0].set_ylabel("Frequency (kHz)")
     axes[0].set_xlabel("Time (s)")
+    axes[0].set_yticks(f_idxs)
+    axes[0].set_yticklabels(khzs)
     axes[0].set_title(title_str)
     axes[0].imshow(vocals_mag, origin='lower', aspect='auto')
     axes[0].set_xticks(frames_to_time)
@@ -67,21 +75,12 @@ for sid in range(18, 19):
     axes[2].set_xticks(frames_to_time)
     axes[2].set_xticklabels(times)
 
-
     # cbar = fig.colorbar(im)
     # cbar.ax.set_ylabel('Magnitude (dB)', rotation=270)
 
     plt.savefig('spec.png')
 
+    # plt.show()
+
     # break
 
-    # fig, axes = plt.subplots(nrows=2, ncols=2)
-    # for ax in axes.flat:
-    #     im = ax.imshow(np.random.random((10, 10)), vmin=0, vmax=1)
-    #
-    # fig.subplots_adjust(right=0.8)
-    # cbar_ax = fig.add_axes([0.85, 0.15, 0.05, 0.7])
-    # fig.colorbar(im, cax=cbar_ax)
-    #
-    # plt.show()
-    # break
