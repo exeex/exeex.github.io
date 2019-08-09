@@ -6,6 +6,13 @@ from pathlib import Path
 data_folder = Path('data')
 files = os.listdir(data_folder)
 
+a = files[0]
+b = files[1]
+c = files[2]
+d = files[3]
+
+files = [b, d, c, a]
+
 plt.figure(dpi=300)
 for file in files:
     csv_file = data_folder / file
@@ -13,7 +20,7 @@ for file in files:
     with open(csv_file, 'r') as f:
         r = csv.reader(f)
         next(r)
-        a = [(time, int(epoch), float(sdr)) for time, epoch, sdr in r]
+        a = [(time, int(epoch) // 5, float(sdr)) for time, epoch, sdr in r]
         times, epochs, sdrs = zip(*a)
         print(epochs)
         print(sdrs)
@@ -26,5 +33,5 @@ plt.ylabel("sdr (dB)")
 plt.ylim(-2.5, 5)
 plt.legend(loc='lower right')
 
-plt.show()
-# plt.savefig('sdr_epoch.png')
+# plt.show()
+plt.savefig('sdr_epoch.png')
