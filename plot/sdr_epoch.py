@@ -26,5 +26,5 @@ plt.ylabel("sdr (dB)")
 plt.ylim(-2.5, 5)
 plt.legend(loc='lower right')
 
-# plt.show()
-plt.savefig('sdr_epoch.png')
+plt.show()
+# plt.savefig('sdr_epoch.png')
