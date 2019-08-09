@@ -21,9 +21,10 @@ for file in files:
     # break
 
 plt.xlabel("epoch")
-plt.ylabel("sdr(dB)")
-plt.title("PyPlot First Example")
+plt.ylabel("sdr (dB)")
+# plt.title("PyPlot First Example")
 plt.ylim(-2.5, 5)
 plt.legend(loc='lower right')
 
-plt.show()
+# plt.show()
+plt.savefig('sdr_epoch.png')
